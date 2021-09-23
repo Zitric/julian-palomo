@@ -1,5 +1,5 @@
 const theme = {
   global: {},
-};
+}
 
-export default theme;
+export default theme

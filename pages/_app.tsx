@@ -1,7 +1,7 @@
 import { Grommet } from 'grommet'
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
-import theme from '../styles/theme.js'
+import theme from '../styles/theme'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

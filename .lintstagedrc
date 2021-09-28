@@ -1,0 +1,9 @@
+{
+  "*.+(js|ts|tsx)": [
+    "next lint"
+  ],
+  "**/*.+(js|json|ts|tsx)": [
+    "yarn prettier --write",
+    "git add"
+  ]
+}

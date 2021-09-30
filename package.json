@@ -6,13 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "lint": "next lint --ignore-path .gitignore --ext .js,.ts,.tsx",
+    "test": "jest",
     "check-types": "tsc",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\"",
     "format": "yarn prettier --write",
     "check-format": "yarn prettier --list-different",
-    "validate": "npm-run-all --parallel check-types check-format lint",
-    "test": "jest"
+    "validate": "npm-run-all --parallel check-types check-format lint test"
   },
   "dependencies": {
     "grommet": "^2.17.5",

@@ -1,5 +1,10 @@
 const theme = {
-  global: {},
+  global: {
+    colors: {
+      brand: '#228BE6',
+    },
+    font: {},
+  },
 }
 
 export default theme

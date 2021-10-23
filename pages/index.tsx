@@ -1,13 +1,22 @@
 import AppBar from 'components/shared/AppBar'
-import { Box, Button, Collapsible, Heading, ResponsiveContext } from 'grommet'
-import { Notification } from 'grommet-icons'
+import {
+  Box,
+  Button,
+  Collapsible,
+  Heading,
+  Layer,
+  ResponsiveContext,
+} from 'grommet'
+import { FormClose, Notification } from 'grommet-icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
 import { FunctionComponent, useState } from 'react'
 import styles from 'styles/Home.module.css'
 
 const Home: FunctionComponent<NextPage> = () => {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(true)
 
   return (
     <ResponsiveContext.Consumer>
@@ -20,7 +29,7 @@ const Home: FunctionComponent<NextPage> = () => {
           </Head>
           <AppBar>
             <Heading level='3' margin='none'>
-              My App
+              My fucking web
             </Heading>
             <Button
               icon={<Notification />}
@@ -30,13 +39,20 @@ const Home: FunctionComponent<NextPage> = () => {
           <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
             <Box flex align='center' justify='center'>
               <main className={styles.main}>
+                <Image
+                  src='/images/profile.jpg'
+                  height={144} // Desired size with correct aspect ratio
+                  width={144} // Desired size with correct aspect ratio
+                  alt='Your Name'
+                />
+
                 <h1 className={styles.title}>
                   Welcome to my new web in{' '}
                   <a href='https://nextjs.org'>Next.js!</a>
                 </h1>
               </main>
             </Box>
-            {size !== 'small' && (
+            {!showSidebar || size !== 'small' ? (
               <Collapsible direction='horizontal' open={showSidebar}>
                 <Box
                   flex
@@ -46,9 +62,32 @@ const Home: FunctionComponent<NextPage> = () => {
                   align='center'
                   justify='center'
                 >
-                  sidebar
+                  <h1 className='title'>
+                    Read{' '}
+                    <Link href='/work'>
+                      <a>my work!</a>
+                    </Link>
+                  </h1>
                 </Box>
               </Collapsible>
+            ) : (
+              <Layer>
+                <Box
+                  background='light-2'
+                  tag='header'
+                  justify='end'
+                  align='center'
+                  direction='row'
+                >
+                  <Button
+                    icon={<FormClose />}
+                    onClick={() => setShowSidebar(false)}
+                  />
+                </Box>
+                <Box fill background='light-2' align='center' justify='center'>
+                  sidebar
+                </Box>
+              </Layer>
             )}
           </Box>
           <footer className={styles.footer}>
